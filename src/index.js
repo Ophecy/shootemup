@@ -1,8 +1,14 @@
+import Entity from "./modules/entity.js";
+
+var root = this;
+
 var config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
     scene: {
+        mode: Phaser.Scale.NONE,
+        parent: 'shootemup',
         preload: preload,
         create: create,
         update: update

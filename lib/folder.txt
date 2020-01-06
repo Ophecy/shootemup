@@ -1,0 +1,1 @@
+Mettre définitions TypeScript de librairies ici (si besoin)
