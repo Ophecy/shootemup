@@ -4,7 +4,8 @@
   "description": "",
   "main": "js/index.js",
   "scripts": {
-    "test": "node js/index.js"
+    "test": "node js/index.js",
+    "start": "http-server -p 8080 ./dist -o index.html"
   },
   "repository": {
     "type": "git",
