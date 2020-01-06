@@ -1,0 +1,25 @@
+{
+  "name": "shootemup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ophecy/shootemup.git"
+  },
+  "keywords": [
+    "shootemup"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ophecy/shootemup/issues"
+  },
+  "homepage": "https://github.com/Ophecy/shootemup#readme",
+  "dependencies": {
+    "phaser": "^3.21.0"
+  }
+}
