@@ -2,9 +2,9 @@
   "name": "shootemup",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "js/index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node js/index.js"
   },
   "repository": {
     "type": "git",
