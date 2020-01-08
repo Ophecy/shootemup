@@ -1,4 +1,5 @@
 import Player from "./modules/player.js";
+import Enemy from "./modules/enemy.js";
 
 var root = this; // Just in case
 
@@ -35,6 +36,12 @@ function preload ()
         frameWidth: 16,
         frameHeight: 16
     });
+
+    // Loading enemy spritesheet (just a single frame at the moment)
+    this.load.spritesheet("sprEnemy", "assets/sprEnemy.png", {
+        frameWidth: 16,
+        frameHeight: 16
+    });
 }
 
 function create ()
@@ -55,6 +62,21 @@ function create ()
         "sprPlayer"
     );
 
+    // Creating enemy animation from spritesheet
+    this.anims.create({
+        key: "sprEnemy",
+        frames: this.anims.generateFrameNumbers("sprEnemy"),
+        frameRate: 20,
+        repeat: -1
+    });
+
+    this.enemy = new Enemy(
+        this,
+        this.game.config.width * 0.25,
+        this.game.config.height* 0.25,
+        "sprEnemy"
+    );
+
     // Keyboard input variables
     this.keyZ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -66,6 +88,7 @@ function create ()
 function update ()
 {
     this.player.update();
+    this.enemy.update();
 
     // Handling controls
     // TODO: Put in a handleInput() function
