@@ -6,7 +6,7 @@ var root = this; // Just in case
 // Phaser config object
 var config = {
     type: Phaser.AUTO,
-    width: 800,
+    width: 400,
     height: 600,
     backgroundColor: 'black',
     physics:  {
@@ -24,13 +24,20 @@ var config = {
         update: update
     },
     pixelArt: true,
-    roundPixels: true
+    roundPixels: false,
+    scale: {
+        mode: Phaser.Scale.RESIZE,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    }
 };
 
 var game = new Phaser.Game(config); // Initializing game with config object
 
 function preload ()
 {
+    // Background
+    this.load.image('bgSpace', 'assets/bgSpace.png');
+
     // Loading player spritesheet (just a single frame at the moment)
     this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
         frameWidth: 16,
@@ -46,6 +53,12 @@ function preload ()
 
 function create ()
 {
+    // Scaling
+    this.scale.setGameSize(this.game.config.width*2, this.game.config.height*2);
+
+    // Background
+    this.bg = this.add.tileSprite(0, 0, this.game.config.width*2, this.game.config.height*2, 'bgSpace');
+
     // Creating player animation from spritesheet
     this.anims.create({
         key: "sprPlayer",
@@ -87,6 +100,10 @@ function create ()
 
 function update ()
 {
+    // Background
+    this.bg.tilePositionY += 2;
+
+    // Entity updates
     this.player.update();
     this.enemy.update();
 
