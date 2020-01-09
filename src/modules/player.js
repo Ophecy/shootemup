@@ -1,4 +1,5 @@
 import Entity from "./entity.js";
+import Projectile from "./projectile.js";
 
 /**
  * Represents the player entity.
@@ -23,6 +24,11 @@ class Player extends Entity {
     }
     moveRight() {
         this.body.velocity.x = this.getData("speed");
+    }
+
+    // TODO: Rework shooting to limit firing/seconds, ie. 5 projectiles/second, with a timer. May be done in input handling part in index.js.
+    shoot() {
+        var projectile = new Projectile(this.scene, this.x, this.y, "sprProjectile");
     }
 
     update() {
