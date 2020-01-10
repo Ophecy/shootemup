@@ -9,8 +9,8 @@ var root = this; // Just in case
 // Phaser config object
 var config = {
     type: Phaser.AUTO,
-    width: 256,
-    height: 512,
+    width: 256*2,
+    height: 512*2,
     backgroundColor: 'black',
     physics:  {
         default: 'arcade', // Simple physics
@@ -43,14 +43,14 @@ function preload ()
 
     // Loading player spritesheet (just a single frame at the moment)
     this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
-        frameWidth: 16,
-        frameHeight: 16
+        frameWidth: 64,
+        frameHeight: 64
     });
 
     // Loading enemy spritesheet (just a single frame at the moment)
     this.load.spritesheet("sprEnemy", "assets/sprEnemy.png", {
-        frameWidth: 16,
-        frameHeight: 16
+        frameWidth: 64,
+        frameHeight: 64
     });
 
     // Loading projectile spritesheet (just a single frame at the moment)
@@ -62,6 +62,10 @@ function preload ()
 
 function create ()
 {
+    // Handling time
+    this.clock = new Phaser.Time.Clock(this);
+    //this.playerFireDelay = this.clock.addEvent();
+
     // Creating physics groups for collisions handling
     this.enemies = this.physics.add.group();
     this.playerProjectiles = this.physics.add.group();
@@ -142,7 +146,6 @@ function update ()
 
     // Loop through projectiles for updates
     for (let i = 0; i < this.playerProjectiles.countActive(); i++){
-        console.log(this.playerProjectiles.getChildren());
         this.playerProjectiles.getChildren()[i].update();
     }
 

@@ -10,6 +10,9 @@ class Player extends Entity {
 
         // Could be in a variable, but having stats variables all over the place might be less readable
         this.setData("speed", 200);
+        this.setData("canShoot", true);
+
+        this.setData("fireRate",5);
     }
 
     // TODO: Rework controls to 1) prevent faster diagonal movement; 2) add acceleration and deceleration
@@ -26,13 +29,21 @@ class Player extends Entity {
         this.body.velocity.x = this.getData("speed");
     }
 
-    // TODO: Rework shooting to limit firing/seconds, ie. 5 projectiles/second, with a timer. May be done in input handling part in index.js.
     shoot() {
-        var projectile = new Projectile(this.scene, this.x, this.y, "sprProjectile");
+        if (this.getData("canShoot")){
+            var projectile = new Projectile(this.scene, this.x, this.y, "sprProjectile");
+            this.setData("canShoot", false);
+            this.nextShot = this.scene.time.now + 1000/this.getData("fireRate");
+        }
     }
 
     update() {
         this.body.setVelocity(0, 0); // May need to be removed after implementing better movement
+
+        if (this.scene.time.now > this.nextShot)
+        {
+            this.setData("canShoot", true);
+        }
 
         // Keeps player inside the bounds of the screen
         this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
