@@ -8,10 +8,11 @@ class Enemy extends Entity {
         // Could be in a variable, but having stats variables all over the place might be less readable
         this.setData("speed", 200);
 
-        /*this.clock = new Phaser.Time.Clock(this.scene);
-        this.moveTimer = this.clock.addEvent({loop: true});*/
+        // Add enemy to the physics group of enemies
+        this.scene.enemies.add(this);
     }
 
+    // TODO: Improve and fix movement
     moveRandom() {
         var decision = RNG.getRandomInt(0, 4);
         switch (decision) {
@@ -49,12 +50,6 @@ class Enemy extends Entity {
     }
 
     update() {
-
-        /*if (this.moveTimer.getElapsed() > 1000) {
-            //this.moveTimer.reset({loop: true});
-            this.moveRandom();
-        }*/
-
         this.body.setVelocity(0, 0); // May need to be removed after implementing better movement
         this.moveRandom();
         // Keeps player inside the bounds of the screen
