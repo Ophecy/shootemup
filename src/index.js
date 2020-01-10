@@ -36,6 +36,39 @@ var config = {
 
 var game = new Phaser.Game(config); // Initializing game with config object
 
+// Collision functions
+
+// Helpful functions
+function hitEnemy(enemy, projectile)
+{
+    //this.physics.pause();
+
+    //enemy.setTint(0xff0000);
+    //enemy.die();
+    enemy.setData("health", -1);
+    projectile.die();
+    //console.log("collision");
+
+    //enemy.anims.play('turn');
+
+    //gameOver = true;
+}
+
+// Helpful functions
+function hitPlayer(player, other)
+{
+    //this.physics.pause();
+
+    //enemy.setTint(0xff0000);
+    player.setData("health", -1);
+    other.die();
+
+    //enemy.anims.play('turn');
+
+    //gameOver = true;
+}
+
+// Phaser functions
 function preload ()
 {
     // Loading background image
@@ -58,6 +91,12 @@ function preload ()
         frameWidth: 16,
         frameHeight: 16
     });
+
+    // Loading explosion spritesheet
+    this.load.spritesheet("sprExplosion", "assets/sprExplosion.png", {
+        frameWidth: 64,
+        frameHeight: 64
+    });
 }
 
 function create ()
@@ -69,6 +108,7 @@ function create ()
     // Creating physics groups for collisions handling
     this.enemies = this.physics.add.group();
     this.playerProjectiles = this.physics.add.group();
+    this.enemyProjectiles = this.physics.add.group();
 
     // Setting background properties (tile and scroll speed)
     this.bg = this.add.tileSprite(0, 0, this.game.config.width*2, this.game.config.height*2, 'bgSpace');
@@ -115,9 +155,17 @@ function create ()
         repeat: -1
     });
 
+    // Creating explosion animation from spritesheet
+    this.anims.create({
+        key: "sprExplosion",
+        frames: this.anims.generateFrameNumbers("sprExplosion"),
+        frameRate: 20,
+        repeat: -1
+    });
+
     // Adding necessary collisions
-    this.physics.add.collider(this.player, this.enemies);
-    this.physics.add.collider(this.enemies, this.playerProjectiles);
+    this.physics.add.collider(this.player, this.enemies, hitPlayer, null, this);
+    this.physics.add.collider(this.enemies, this.playerProjectiles, hitEnemy, null, this);
 
     // Keyboard input variables
     this.keyZ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
@@ -138,15 +186,25 @@ function create ()
 function update ()
 {
     // Background scrolling
-    this.bg.tilePositionY += this.bgScrollSpeed;
+    this.bg.tilePositionY -= this.bgScrollSpeed;
 
     // Entity updates
     this.player.update();
-    this.enemy.update();
+    //this.enemy.update();
+
+    // Loop through enemies for updates
+    for (let i = 0; i < this.enemies.countActive(); i++){
+        this.enemies.getChildren()[i].update();
+    }
 
     // Loop through projectiles for updates
     for (let i = 0; i < this.playerProjectiles.countActive(); i++){
         this.playerProjectiles.getChildren()[i].update();
+    }
+
+    // Loop through projectiles for updates
+    for (let i = 0; i < this.enemyProjectiles.countActive(); i++){
+        this.enemyProjectiles.getChildren()[i].update();
     }
 
     // Handling controls

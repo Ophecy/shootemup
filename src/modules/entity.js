@@ -13,6 +13,18 @@ class Entity extends Phaser.GameObjects.Sprite {
         this.setData("isDead", false);
         this.play(key); // TODO: Put this function call in child entities? ie. Player
     }
+
+    die(){
+        this.setData("isDead", true);
+        this.play("sprExplosion");
+       // this.scene.physics.world.disableBody(this);
+        //this.body.velocity.y = this.getData("speed");
+        //this.setPosition(this.x, this.y);
+
+        this.despawnDelay = this.scene.time.now + 2000;
+        //this.destroy();
+        //delete this;
+    }
 }
 
 export default Entity;
