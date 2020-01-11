@@ -4,9 +4,9 @@
 * shootemup: html, README, etc.
   * assets: images, sounds, etc.
   * css: stylesheets
-  * js: Javascript librairies (ie. Phaser)
+  * js: Javascript libraries (ie. Phaser)
   * lib: TypeScript definitions if needed
-  * (node_modules): leftover from installing Phaser with npm. To delete.
+  * node_modules: Directory of npm packages. Contains JSDoc package.
   * src: Javascript source files
     * modules: ES6 modules
 
