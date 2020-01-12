@@ -80,11 +80,7 @@ class SceneMain extends Phaser.Scene {
                 frameHeight: 8
             }
         );
-        this.statusBarFull = this.load.spritesheet("sprStatusBarFull", "assets/sprStatusBarFull.png", {
-                frameWidth: 256,
-                frameHeight: 240
-            }
-        );
+        this.load.image("sprStatusBarFull", "assets/sprStatusBarFull.png");
 
         // Loading player spritesheet (just a single frame at the moment)
         this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
