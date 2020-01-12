@@ -21,6 +21,8 @@ class SceneGameOver extends Phaser.Scene {
     preload() {
         // Loading background image
         this.load.image('bgSpace', 'assets/bgSpace.png');
+        this.load.bitmapFont('titleFont', 'assets/fonts/titleFont.png', 'assets/fonts/titleFont.fnt');
+        this.load.bitmapFont('promptFont', 'assets/fonts/promptFont.png', 'assets/fonts/promptFont.fnt');
     }
 
     /**
@@ -43,7 +45,10 @@ class SceneGameOver extends Phaser.Scene {
         this.bitmapTitle.setOrigin(0.5);
         this.bitmapTitle.setTint(0xFF0000);
 
-        this.bitmapPrompt = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.6, 'promptFont', "Press START to continue...", 16);
+        this.bitmapFinalScore = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.6, 'promptFont', `Your Score: ${this.game.global.finalScore}`, 16);
+        this.bitmapFinalScore.setOrigin(0.5);
+
+        this.bitmapPrompt = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.8, 'promptFont', "Press START to continue...", 16);
         this.bitmapPrompt.setOrigin(0.5);
 
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);

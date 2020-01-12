@@ -205,7 +205,7 @@ class SceneMain extends Phaser.Scene {
             loop: true
         });
 
-        this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.1, this.game.config.height*0.01, 'promptFont', `Score: ${this.game.global.score}`, 16);
+        this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.20, this.game.config.height*0.020, 'promptFont', `Score: ${this.game.global.score}`, 16);
         this.bitmapScore.setOrigin(0.5);
         this.bitmapScore.setDepth(1);
         console.log(this.bitmapScore)
@@ -218,7 +218,20 @@ class SceneMain extends Phaser.Scene {
     update() {
         // Background scrolling
         this.bg.tilePositionY -= this.bgScrollSpeed;
-        this.bitmapScore._text = `Score: ${this.game.global.score}`;
+        //this.bitmapScore.text = `Score: ${this.game.global.score}`;
+        // Scoring
+        if (this.game.global.addedPoints != 0 && this.game.global.addedPointsMultiplier != 0){
+            this.bitmapScore.text = `Score: ${this.game.global.score}\n+${this.game.global.addedPoints}x${this.game.global.addedPointsMultiplier}`;
+        }
+        else if (this.game.global.addedPoints != 0 && this.game.global.addedPointsMultiplier == 0)
+        {
+            this.bitmapScore.text = `Score: ${this.game.global.score}\n+${this.game.global.addedPoints}`;
+
+        }
+        else {
+            this.bitmapScore.text = `Score: ${this.game.global.score}`;
+        }
+
 
         // Entity updates
         this.player.update();
@@ -237,24 +250,6 @@ class SceneMain extends Phaser.Scene {
         for (let i = 0; i < this.enemyProjectiles.countActive(); i++) {
             this.enemyProjectiles.getChildren()[i].update();
         }
-
-        // Scoring
-        /*
-        if (this.game.score.addedPoints != 0 && this.game.score.addedPointsMultiplier != 0){
-            // Scoring
-            this.bitmapScore.text = "Score: "+this.game.score.currentScore+"\n"+"+"+this.game.score.addedPoints+" x "+this.game.score.addedPointsMultiplier;
-        }
-        else if (this.game.score.addedPoints != 0 && this.game.score.addedPointsMultiplier == 0)
-        {
-            this.bitmapScore.text = "Score: "+this.game.score.currentScore+"\n"+"+"+this.game.score.addedPoints;
-
-        }
-        else
-        {
-            this.bitmapScore.text = "Score: "+this.game.score.currentScore;
-        }*/
-
-        //this.bitmapScore.update();
 
         // Handling controls
         // TODO: Put in a handleInput() function

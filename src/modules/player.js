@@ -95,7 +95,7 @@ class Player extends Entity {
         this.setData("isDead", true);
         this.play("sprExplosion");
         this.despawnDelay = this.scene.time.now + 2000;
-        //this.scene.game.score.finalScore = this.scene.game.score.currentScore;
+        this.scene.game.global.finalScore = this.scene.game.global.score;
         //this.body.setVelocity(0, 0); // May need to be removed after implementing better movement
         //this.disableBody(true, true);
     }
@@ -116,12 +116,10 @@ class Player extends Entity {
             this.invincibilityTime = this.scene.time.now + this.getData("invincibilityDuration");
 
             // Scoring
-            /*
-            this.scene.game.score.currentScore += this.scene.game.score.addedPoints * this.scene.game.score.addedPointsMultiplier;
-            this.scene.game.score.noHitCount = 0;
-            this.scene.game.score.addedPoints = 0;
-            this.scene.game.score.addedPointsMultiplier = 0;
-             */
+            this.scene.game.global.score += this.scene.game.global.addedPoints * this.scene.game.global.addedPointsMultiplier;
+            this.scene.game.global.noHitCount = 0;
+            this.scene.game.global.addedPoints = 0;
+            this.scene.game.global.addedPointsMultiplier = 0;
             //this.checkLife();
         }
     }
