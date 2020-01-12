@@ -27,7 +27,6 @@ class Player extends Entity {
         // Shooting
         this.setData("canShoot", true); // Used to add a delay between fires
         this.setData("fireRate", 10); // The fire rate in projectile/second
-
         // Default stats
         this.setData("maxHealth", 100);
         this.setData("health", this.getData("maxHealth"));
@@ -146,12 +145,12 @@ class Player extends Entity {
                 this.setTint(0xffffff); // Revert tint to normal
             }
         } else { // Updates if player IS dead
-            console.log("Inside Player isDead");
+            if (this.scene.game.global.debug) console.log("Inside Player isDead");
             this.body.destroy();
             this.y += 2;
             // Destroys player if delay is reached
             if (this.scene.time.now > this.despawnDelay) {
-                console.log("Inside Player after despawn Delay");
+                if (this.scene.game.global.debug) console.log("Inside Player after despawn Delay");
                 //this.scene.physics.world.disableBody(this);
 
                 // TODO: Check that the following don't cause bugs

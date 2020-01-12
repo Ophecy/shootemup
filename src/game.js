@@ -55,6 +55,6 @@ game.global = {
     addedPoints: 0,
     addedPointsMultiplier: 0,
     finalScore: 0,
-    noHitCount: 0
+    noHitCount: 0,
+    debug: true
 };
-//console.log("In game.js");

@@ -27,8 +27,6 @@ class SceneMainMenu extends Phaser.Scene {
      * @see {@link https://photonstorm.github.io/phaser3-docs/Phaser.Types.Scenes.html#.SceneCreateCallback|Phaser.Types.Scenes.SceneCreateCallback}
      */
     create() {
-        //console.log("In SceneMainMenu.create()");
-
         /**
          * @var bg
          * @description The background image of the scene.

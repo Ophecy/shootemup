@@ -24,7 +24,7 @@ class SceneMain extends Phaser.Scene {
      * @returns {Enemy} The instantiated Enemy.
      */
     spawnEnemy(x, y) {
-        console.log("In SceneMain.spawnEnemy()");
+        if (this.game.global.debug) console.log("In SceneMain.spawnEnemy()");
         return new Enemy(
             this,
             x,
@@ -221,7 +221,7 @@ class SceneMain extends Phaser.Scene {
         this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.20, this.game.config.height*0.05, 'promptFont', `Score: ${this.game.global.score}`, 16);
         this.bitmapScore.setOrigin(0.5);
         this.bitmapScore.setDepth(1);
-        console.log(this.bitmapScore)
+        if (this.game.global.debug) console.log(this.bitmapScore)
     }
 
     /**

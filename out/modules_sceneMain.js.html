@@ -51,7 +51,7 @@ class SceneMain extends Phaser.Scene {
      * @returns {Enemy} The instantiated Enemy.
      */
     spawnEnemy(x, y) {
-        console.log("In SceneMain.spawnEnemy()");
+        if (this.scene.game.global.debug) console.log("In SceneMain.spawnEnemy()");
         return new Enemy(
             this,
             x,

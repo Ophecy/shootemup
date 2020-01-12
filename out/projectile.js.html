@@ -39,7 +39,7 @@ class Projectile extends Entity {
         // TODO: Add an argument to determine if it has to be added to player projectiles or enemy projectiles
         //this.scene.playerProjectiles.add(this);
         this.owner = owner;
-        console.log(this.owner);
+        if (this.scene.game.global.debug) console.log(this.owner);
 
         this.direction = direction;
 

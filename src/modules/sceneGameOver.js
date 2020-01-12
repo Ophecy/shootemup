@@ -30,7 +30,6 @@ class SceneGameOver extends Phaser.Scene {
      * @see {@link https://photonstorm.github.io/phaser3-docs/Phaser.Types.Scenes.html#.SceneCreateCallback|Phaser.Types.Scenes.SceneCreateCallback}
      */
     create() {
-        //console.log("In SceneGameOver.create()");
 
         /**
          * @var bg

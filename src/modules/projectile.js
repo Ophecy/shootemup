@@ -48,7 +48,7 @@ class Projectile extends Entity {
             this.scene.enemyProjectiles.add(this);
         }
 
-        console.log(this.owner);
+        if (this.scene.game.global.debug) console.log(this.owner);
     }
 
     /**
