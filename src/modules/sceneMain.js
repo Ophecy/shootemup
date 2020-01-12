@@ -75,6 +75,16 @@ class SceneMain extends Phaser.Scene {
     preload() {
         // Loading background image
         this.load.image('bgSpace', 'assets/bgSpace.png');
+        this.load.spritesheet("sprStatusBarEmpty", "assets/sprStatusBarEmpty.png", {
+                frameWidth: 256,
+                frameHeight: 8
+            }
+        );
+        this.statusBarFull = this.load.spritesheet("sprStatusBarFull", "assets/sprStatusBarFull.png", {
+                frameWidth: 256,
+                frameHeight: 240
+            }
+        );
 
         // Loading player spritesheet (just a single frame at the moment)
         this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
@@ -165,6 +175,11 @@ class SceneMain extends Phaser.Scene {
             repeat: 0
         });
 
+        // Adding statusbar
+        this.add.image(this.game.config.width/2, 16,  'sprStatusBarFull');
+        // this.add.image(this.game.config.width/2, 16,  'sprStatusBarEmpty');
+
+
         // Adding necessary collisions
         this.physics.add.collider(this.player, this.enemies, this.hitPlayer, null, this);
         this.physics.add.collider(this.enemies, this.playerProjectiles, this.hitEnemy, null, this);
@@ -195,7 +210,7 @@ class SceneMain extends Phaser.Scene {
             loop: true
         });
 
-        this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.1, this.game.config.height*0.01, 'promptFont', `Score: ${this.game.global.score}`, 16);
+        this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.1, this.game.config.height * 0.01, 'promptFont', `Score: ${this.game.global.score}`, 16);
         this.bitmapScore.setOrigin(0.5);
         this.bitmapScore.setDepth(1);
         console.log(this.bitmapScore)
@@ -209,6 +224,9 @@ class SceneMain extends Phaser.Scene {
         // Background scrolling
         this.bg.tilePositionY -= this.bgScrollSpeed;
         this.bitmapScore._text = `Score: ${this.game.global.score}`;
+
+        // Update statusbar
+        this.statusBarFull.width = this.player.getData('health');
 
         // Entity updates
         this.player.update();
