@@ -28,7 +28,7 @@ class SceneGameOver extends Phaser.Scene {
      * @see {@link https://photonstorm.github.io/phaser3-docs/Phaser.Types.Scenes.html#.SceneCreateCallback|Phaser.Types.Scenes.SceneCreateCallback}
      */
     create() {
-        console.log("In SceneGameOver.create()");
+        //console.log("In SceneGameOver.create()");
 
         /**
          * @var bg
@@ -47,7 +47,7 @@ class SceneGameOver extends Phaser.Scene {
         this.bitmapPrompt.setOrigin(0.5);
 
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        this.startKey = this.keySpace;
+        this.restartKey = this.keySpace;
     }
 
     /**
@@ -59,7 +59,7 @@ class SceneGameOver extends Phaser.Scene {
         this.bg.tilePositionY -= this.bgScrollSpeed;
 
         // Shooting
-        if (this.startKey.isDown) {
+        if (this.restartKey.isDown) {
             this.scene.start("SceneMain");
         }
     }

@@ -51,4 +51,4 @@ var config = {
  */
 var game = new Phaser.Game(config); // Initializing game with config object
 
-console.log("In game.js");
+//console.log("In game.js");

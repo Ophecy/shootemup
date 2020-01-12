@@ -27,8 +27,7 @@ class SceneMainMenu extends Phaser.Scene {
      * @see {@link https://photonstorm.github.io/phaser3-docs/Phaser.Types.Scenes.html#.SceneCreateCallback|Phaser.Types.Scenes.SceneCreateCallback}
      */
     create() {
-        this.add.text(0, 0, "hack", {font: "1px 04b11", fill: "#0FFFFFF"});
-        console.log("In SceneMainMenu.create()");
+        //console.log("In SceneMainMenu.create()");
 
         /**
          * @var bg
