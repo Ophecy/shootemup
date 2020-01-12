@@ -47,6 +47,7 @@ class SceneGameOver extends Phaser.Scene {
 
         this.bitmapFinalScore = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.6, 'promptFont', `Your Score: ${this.game.global.finalScore}`, 16);
         this.bitmapFinalScore.setOrigin(0.5);
+        this.bitmapFinalScore.setDepth(1000);
 
         this.bitmapPrompt = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.8, 'promptFont', "Press START to continue...", 16);
         this.bitmapPrompt.setOrigin(0.5);

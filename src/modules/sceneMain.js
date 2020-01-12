@@ -79,6 +79,10 @@ class SceneMain extends Phaser.Scene {
         // Loading background image
         this.load.image('bgSpace', 'assets/bgSpace.png');
 
+        // HealthBar
+        this.load.image('sprHealthBarFull', 'assets/sprHealthbarFull.png');
+        this.load.image('sprHealthBarEmpty', 'assets/sprHealthbarEmpty.png');
+
         // Loading player spritesheet (just a single frame at the moment)
         this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
             frameWidth: 64,
@@ -134,6 +138,15 @@ class SceneMain extends Phaser.Scene {
          */
         this.bg = this.add.tileSprite(0, 0, this.game.config.width * 2, this.game.config.height * 2, 'bgSpace');
         this.bgScrollSpeed = 2;
+
+        this.playerHealthBar = this.add.image(this.game.config.width*0.10, this.game.config.height*0.010, "sprHealthBarFull");
+        this.playerHealthBarBackground = this.add.image(this.game.config.width*0.10, this.game.config.height*0.010, "sprHealthBarEmpty");
+
+        this.playerHealthBar.setOrigin(0, 0);
+        this.playerHealthBarBackground.setOrigin(0, 0);
+
+        this.playerHealthBar.setDepth(100);
+        this.playerHealthBarBackground.setDepth(99);
 
         // Creating player animation from spritesheet
         this.anims.create({
@@ -205,7 +218,7 @@ class SceneMain extends Phaser.Scene {
             loop: true
         });
 
-        this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.20, this.game.config.height*0.020, 'promptFont', `Score: ${this.game.global.score}`, 16);
+        this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.20, this.game.config.height*0.05, 'promptFont', `Score: ${this.game.global.score}`, 16);
         this.bitmapScore.setOrigin(0.5);
         this.bitmapScore.setDepth(1);
         console.log(this.bitmapScore)
@@ -219,6 +232,7 @@ class SceneMain extends Phaser.Scene {
         // Background scrolling
         this.bg.tilePositionY -= this.bgScrollSpeed;
         //this.bitmapScore.text = `Score: ${this.game.global.score}`;
+
         // Scoring
         if (this.game.global.addedPoints != 0 && this.game.global.addedPointsMultiplier != 0){
             this.bitmapScore.text = `Score: ${this.game.global.score}\n+${this.game.global.addedPoints}x${this.game.global.addedPointsMultiplier}`;
@@ -235,6 +249,11 @@ class SceneMain extends Phaser.Scene {
 
         // Entity updates
         this.player.update();
+        // Healthbar, updated AFTER player
+        this.playerHealthBar.setScale(this.player.getData("health"), 1);
+        this.playerHealthBarBackground.setScale(this.player.getData("maxHealth"), 1);
+        //this.playerHealthBar.setSize(this.player.getData("health"),16);
+        //this.playerHealthBarBackground.setSize(this.player.getData("maxHealth"),16);
 
         // Loop through enemies for updates
         for (let i = 0; i < this.enemies.countActive(); i++) {
