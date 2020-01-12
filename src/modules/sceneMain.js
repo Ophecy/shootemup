@@ -145,8 +145,8 @@ class SceneMain extends Phaser.Scene {
         this.playerHealthBar.setOrigin(0, 0);
         this.playerHealthBarBackground.setOrigin(0, 0);
 
-        this.playerHealthBar.setDepth(100);
-        this.playerHealthBarBackground.setDepth(99);
+        this.playerHealthBar.setDepth(2);
+        this.playerHealthBarBackground.setDepth(1);
 
         // Creating player animation from spritesheet
         this.anims.create({
@@ -249,11 +249,11 @@ class SceneMain extends Phaser.Scene {
 
         // Entity updates
         this.player.update();
+
         // Healthbar, updated AFTER player
-        this.playerHealthBar.setScale(this.player.getData("health"), 1);
-        this.playerHealthBarBackground.setScale(this.player.getData("maxHealth"), 1);
-        //this.playerHealthBar.setSize(this.player.getData("health"),16);
-        //this.playerHealthBarBackground.setSize(this.player.getData("maxHealth"),16);
+
+        this.playerHealthBar.scaleX = this.player.getData("health");
+        //this.playerHealthBarBackground.scaleX = this.player.getData("maxHealth");
 
         // Loop through enemies for updates
         for (let i = 0; i < this.enemies.countActive(); i++) {

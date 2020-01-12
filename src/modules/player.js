@@ -91,6 +91,7 @@ class Player extends Entity {
      * Kills this entity.
      */
     die() {
+        this.scene.playerHealthBar.setDepth(-1000);
         this.setTint(0xffffff); // Revert tint to normal
         this.setData("isDead", true);
         this.play("sprExplosion");
