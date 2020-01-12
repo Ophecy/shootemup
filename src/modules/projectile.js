@@ -68,7 +68,7 @@ class Projectile extends Entity {
         this.body.velocity.y = this.direction * this.getData("speed");
 
         // Destroys projectile when out of bounds by calling die()
-        if (this.x <= 0 || this.y <= 0 || this.x >= this.scene.game.config.width || this.y >= this.scene.game.config.height) {
+        if (this.x < 0 || this.y <= 0 || this.x > this.scene.game.config.width || this.y >= this.scene.game.config.height) {
             this.die();
         }
     }
