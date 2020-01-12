@@ -1,0 +1,26 @@
+{
+  "name": "shootemup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/game.js",
+  "scripts": {
+    "test": "node js/index.js",
+    "start": "http-server -p 8080 . -o index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ophecy/shootemup.git"
+  },
+  "keywords": [
+    "shootemup"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ophecy/shootemup/issues"
+  },
+  "homepage": "https://github.com/Ophecy/shootemup#readme",
+  "dependencies": {
+    "phaser": "^3.21.0"
+  }
+}
