@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/modules/projectile</title>
+    <title>JSDoc: Module: src/modules/sceneMainMenu</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/modules/projectile</h1>
+    <h1 class="page-title">Module: src/modules/sceneMainMenu</h1>
 
     
 
@@ -40,99 +40,16 @@
     <div class="container-overview">
     
         
-            <div class="description">Projectile module.</div>
+            <div class="description">Main menu scene module.</div>
         
 
         
             
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_projectile.js.html">modules/projectile.js</a>, <a href="modules_projectile.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="module-src_modules_entity.html">module:src/modules/entity</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="module:src/modules/projectile"><span class="type-signature"></span>module:src/modules/projectile<span class="type-signature"></span></h4>
+    <h4 class="name" id="module:src/modules/sceneMainMenu"><span class="type-signature"></span>module:src/modules/sceneMainMenu<span class="type-signature"></span></h4>
     
 
     
@@ -140,7 +57,7 @@
 
 
 <div class="description">
-    Exports the Projectile class as default.
+    Exports class SceneMainMenu as default.
 </div>
 
 
@@ -184,7 +101,83 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_projectile.js.html">modules/projectile.js</a>, <a href="modules_projectile.js.html#line80">line 80</a>
+        <a href="modules_sceneMainMenu.js.html">modules/sceneMainMenu.js</a>, <a href="modules_sceneMainMenu.js.html#line89">line 89</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="modules_sceneMainMenu.js.html">modules/sceneMainMenu.js</a>, <a href="modules_sceneMainMenu.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -226,7 +219,7 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="module-src_modules_projectile-Projectile.html">Projectile</a></dt>
+            <dt><a href="module-src_modules_sceneMainMenu-SceneMainMenu.html">SceneMainMenu</a></dt>
             <dd></dd>
         </dl>
     
@@ -242,13 +235,13 @@
 
         
             
-<h4 class="name" id="~direction"><span class="type-signature">(inner) </span>direction<span class="type-signature"> :number</span></h4>
+<h4 class="name" id="~bg"><span class="type-signature">(inner) </span>bg<span class="type-signature"> :Phaser.GameObjects.TileSprite</span></h4>
 
 
 
 
 <div class="description">
-    The direction the projectile moves on the y-axis. Either -1 for up, 0 for none, 1 for down.
+    The background image of the scene.
 </div>
 
 
@@ -257,7 +250,7 @@
     <ul>
         <li>
             
-<span class="param-type">number</span>
+<span class="param-type">Phaser.GameObjects.TileSprite</span>
 
 
         </li>
@@ -296,7 +289,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_projectile.js.html">modules/projectile.js</a>, <a href="modules_projectile.js.html#line33">line 33</a>
+        <a href="modules_sceneMainMenu.js.html">modules/sceneMainMenu.js</a>, <a href="modules_sceneMainMenu.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -314,13 +307,13 @@
 
         
             
-<h4 class="name" id="~owner"><span class="type-signature">(inner) </span>owner<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="~prompt"><span class="type-signature">(inner) </span>prompt<span class="type-signature"> :Phaser.GameObjects.Text</span></h4>
 
 
 
 
 <div class="description">
-    The owner of the projectile, either the player or an enemy.
+    The text prompting the player to press a key.
 </div>
 
 
@@ -329,7 +322,7 @@
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type">Phaser.GameObjects.Text</span>
 
 
         </li>
@@ -368,7 +361,79 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_projectile.js.html">modules/projectile.js</a>, <a href="modules_projectile.js.html#line26">line 26</a>
+        <a href="modules_sceneMainMenu.js.html">modules/sceneMainMenu.js</a>, <a href="modules_sceneMainMenu.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="~title"><span class="type-signature">(inner) </span>title<span class="type-signature"> :Phaser.GameObjects.Text</span></h4>
+
+
+
+
+<div class="description">
+    The main menu title text.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Phaser.GameObjects.Text</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="modules_sceneMainMenu.js.html">modules/sceneMainMenu.js</a>, <a href="modules_sceneMainMenu.js.html#line38">line 38</a>
     </li></ul></dd>
     
 

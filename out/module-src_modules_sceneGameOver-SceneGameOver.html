@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/modules/projectile</title>
+    <title>JSDoc: Class: SceneGameOver</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/modules/projectile</h1>
+    <h1 class="page-title">Class: SceneGameOver</h1>
 
     
 
@@ -28,10 +28,10 @@
 
 <header>
     
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="module-src_modules_sceneGameOver.html">src/modules/sceneGameOver</a>~</span>SceneGameOver<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            
-        
-            
+            <div class="class-description">Represents the game over scene, which starts when the player dies, and where the player can press Space to restart the game.</div>
         
     
 </header>
@@ -40,13 +40,22 @@
     <div class="container-overview">
     
         
-            <div class="description">Projectile module.</div>
-        
 
-        
-            
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="SceneGameOver"><span class="type-signature"></span>new SceneGameOver<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
 
 
+
+<div class="description">
+    Creates the game over scene with an appropriate key.
+</div>
 
 
 
@@ -89,7 +98,115 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_projectile.js.html">modules/projectile.js</a>, <a href="modules_projectile.js.html#line1">line 1</a>
+        <a href="modules_sceneGameOver.js.html">modules/sceneGameOver.js</a>, <a href="modules_sceneGameOver.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    The create function of the scene.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="modules_sceneGameOver.js.html">modules/sceneGameOver.js</a>, <a href="modules_sceneGameOver.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -99,7 +216,7 @@
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li><a href="module-src_modules_entity.html">module:src/modules/entity</a></li>
+            <li><a href="https://photonstorm.github.io/phaser3-docs/Phaser.Types.Scenes.html#.SceneCreateCallback">Phaser.Types.Scenes.SceneCreateCallback</a></li>
         </ul>
     </dd>
     
@@ -132,7 +249,7 @@
     
 
     
-    <h4 class="name" id="module:src/modules/projectile"><span class="type-signature"></span>module:src/modules/projectile<span class="type-signature"></span></h4>
+    <h4 class="name" id="preload"><span class="type-signature"></span>preload<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -140,7 +257,7 @@
 
 
 <div class="description">
-    Exports the Projectile class as default.
+    The preload function of the scene.
 </div>
 
 
@@ -184,12 +301,19 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_projectile.js.html">modules/projectile.js</a>, <a href="modules_projectile.js.html#line80">line 80</a>
+        <a href="modules_sceneGameOver.js.html">modules/sceneGameOver.js</a>, <a href="modules_sceneGameOver.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://photonstorm.github.io/phaser3-docs/Phaser.Types.Scenes.html#.ScenePreloadCallback">Phaser.Types.Scenes.ScenePreloadCallback</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -215,53 +339,29 @@
 
 
         
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-src_modules_projectile-Projectile.html">Projectile</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
             
-<h4 class="name" id="~direction"><span class="type-signature">(inner) </span>direction<span class="type-signature"> :number</span></h4>
 
+    
+
+    
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
 
 
 
 <div class="description">
-    The direction the projectile moves on the y-axis. Either -1 for up, 0 for none, 1 for down.
+    The update function of the scene.
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
 
 
-        </li>
-    </ul>
+
+
+
 
 
 
@@ -296,12 +396,19 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_projectile.js.html">modules/projectile.js</a>, <a href="modules_projectile.js.html#line33">line 33</a>
+        <a href="modules_sceneGameOver.js.html">modules/sceneGameOver.js</a>, <a href="modules_sceneGameOver.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://photonstorm.github.io/phaser3-docs/Phaser.Scene.html#.update__anchor">Phaser.Scene.update</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -312,72 +419,14 @@
 
 
 
-        
-            
-<h4 class="name" id="~owner"><span class="type-signature">(inner) </span>owner<span class="type-signature"> :string</span></h4>
-
-
-
-
-<div class="description">
-    The owner of the projectile, either the player or an enemy.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
 
 
 
 
 
-<dl class="details">
 
-    
 
-    
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_projectile.js.html">modules/projectile.js</a>, <a href="modules_projectile.js.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
 
 
 
@@ -385,8 +434,6 @@
 
 
         
-    
-
     
 
     

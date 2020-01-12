@@ -29,7 +29,7 @@
 <header>
     
         <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="module-src_modules_enemy.html">module:src/modules/enemy</a>~</span>Enemy<span class="signature">(scene, x, y, key)</span><span class="type-signature"></span></h2>
+            <span class="ancestors"><a href="module-src_modules_enemy.html">src/modules/enemy</a>~</span>Enemy<span class="signature">(scene, x, y, key)</span><span class="type-signature"></span></h2>
         
             <div class="class-description">Represents an enemy.</div>
         
@@ -96,7 +96,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">Phaser.Scene</span>
 
 
             
@@ -291,7 +291,7 @@
 
 
 <div class="description">
-    Checks this entity's health data and kills it if its health is <= 0.
+    Checks this entity's health data and kills it if its health is <= 0. Also destroys it if outside of bounds.
 </div>
 
 
@@ -335,7 +335,144 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line130">line 130</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="damageEntity"><span class="type-signature"></span>damageEntity<span class="signature">(damage)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Applies damage to an entity, and sets a temporary invincibility.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>damage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The incoming damage.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -423,7 +560,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line98">line 98</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -511,7 +648,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line105">line 105</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line110">line 110</a>
     </li></ul></dd>
     
 
@@ -599,7 +736,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line47">line 47</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -687,7 +824,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line112">line 112</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line117">line 117</a>
     </li></ul></dd>
     
 
@@ -775,7 +912,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line91">line 91</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line96">line 96</a>
     </li></ul></dd>
     
 
@@ -863,7 +1000,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line119">line 119</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line124">line 124</a>
     </li></ul></dd>
     
 
@@ -995,7 +1132,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line73">line 73</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -1083,7 +1220,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line143">line 143</a>
+        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -1136,13 +1273,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_modules_enemy.html">src/modules/enemy</a></li><li><a href="module-src_modules_entity.html">src/modules/entity</a></li><li><a href="module-src_modules_player.html">src/modules/player</a></li><li><a href="module-src_modules_projectile.html">src/modules/projectile</a></li><li><a href="module-src_modules_rng.html">src/modules/rng</a></li></ul><h3>Classes</h3><ul><li><a href="module-src_modules_enemy-Enemy.html">Enemy</a></li><li><a href="module-src_modules_entity-Entity.html">Entity</a></li><li><a href="module-src_modules_player-Player.html">Player</a></li><li><a href="module-src_modules_projectile-Projectile.html">Projectile</a></li><li><a href="module-src_modules_rng-RNG.html">RNG</a></li></ul><h3>Global</h3><ul><li><a href="global.html#config">config</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#game">game</a></li><li><a href="global.html#hitEnemy">hitEnemy</a></li><li><a href="global.html#hitPlayer">hitPlayer</a></li><li><a href="global.html#preload">preload</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#spawnEnemy">spawnEnemy</a></li><li><a href="global.html#update">update</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-src_modules_enemy.html">src/modules/enemy</a></li><li><a href="module-src_modules_entity.html">src/modules/entity</a></li><li><a href="module-src_modules_player.html">src/modules/player</a></li><li><a href="module-src_modules_projectile.html">src/modules/projectile</a></li><li><a href="module-src_modules_rng.html">src/modules/rng</a></li><li><a href="module-src_modules_sceneGameOver.html">src/modules/sceneGameOver</a></li><li><a href="module-src_modules_sceneMain.html">src/modules/sceneMain</a></li><li><a href="module-src_modules_sceneMainMenu.html">src/modules/sceneMainMenu</a></li></ul><h3>Classes</h3><ul><li><a href="module-src_modules_enemy-Enemy.html">Enemy</a></li><li><a href="module-src_modules_entity-Entity.html">Entity</a></li><li><a href="module-src_modules_player-Player.html">Player</a></li><li><a href="module-src_modules_projectile-Projectile.html">Projectile</a></li><li><a href="module-src_modules_rng-RNG.html">RNG</a></li><li><a href="module-src_modules_sceneGameOver-SceneGameOver.html">SceneGameOver</a></li><li><a href="module-src_modules_sceneMainMenu-SceneMainMenu.html">SceneMainMenu</a></li><li><a href="module-src_modules_sceneMain-SceneMain.html">SceneMain</a></li></ul><h3>Global</h3><ul><li><a href="global.html#config">config</a></li><li><a href="global.html#game">game</a></li><li><a href="global.html#root">root</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sat Jan 11 2020 11:34:34 GMT+0100 (GMT+01:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sun Jan 12 2020 12:40:27 GMT+0100 (GMT+01:00)
 </footer>
 
 <script> prettyPrint(); </script>

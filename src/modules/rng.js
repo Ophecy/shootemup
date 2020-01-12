@@ -15,7 +15,7 @@ class RNG {
      * @param includeMax
      * @returns {number} - The returned random number.
      */
-    static getRandomInt(min, max, includeMax=false) {
+    static getRandomInt(min, max, includeMax = false) {
         // We don't use Math.round() because it would lead to an uneven distribution
         min = Math.ceil(min);
         max = Math.floor(max + includeMax); // includeMax being true causes max to become max+1, effectively including the max number ; max equals to max+0 otherwise

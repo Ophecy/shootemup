@@ -23,29 +23,38 @@ class Projectile extends Entity {
     constructor(scene, x, y, direction, key, owner, damage) {
         super(scene, x, y, key, "Projectile"); // Calls parent constructor
 
+        /**
+         * The owner of the projectile, either the player or an enemy.
+         * @var owner
+         * @type {string}
+         */
         this.owner = owner;
-        //console.log(this.owner);
+
+        /**
+         * The direction the projectile moves on the y-axis. Either -1 for up, 0 for none, 1 for down.
+         * @var direction
+         * @type {number}
+         */
         this.direction = direction;
 
         // Gameplay related data (as opposed to functional, OOP data if that makes sense)
-        this.setData("speed", 400);
-        this.setData("damage", damage)
+        this.setData("speed", 400); // The speed at which the projectiles moves
+        this.setData("damage", damage); // The damage inflicted by the projectile
 
         // Add projectile to appropriate physics group
-        if (this.owner == "Player")
-        {
+        if (this.owner == "Player") {
             this.scene.playerProjectiles.add(this);
-        }
-        else if (this.owner == "Enemy")
-        {
+        } else if (this.owner == "Enemy") {
             this.scene.enemyProjectiles.add(this);
         }
+
+        console.log(this.owner);
     }
 
     /**
      * Destroys the projectile.
      */
-    die(){
+    die() {
         this.body.setVelocity(0, 0); // May need to be removed after implementing better movement
         this.scene.physics.world.disableBody(this);
         this.destroy(true);
@@ -59,7 +68,7 @@ class Projectile extends Entity {
         this.body.velocity.y = this.direction * this.getData("speed");
 
         // Destroys projectile when out of bounds by calling die()
-        if (this.x <= 0 || this.y <= 0 || this.x >= this.scene.game.config.width || this.y >= this.scene.game.config.height){
+        if (this.x <= 0 || this.y <= 0 || this.x >= this.scene.game.config.width || this.y >= this.scene.game.config.height) {
             this.die();
         }
     }

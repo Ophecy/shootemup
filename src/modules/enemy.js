@@ -14,7 +14,7 @@ import Projectile from "./projectile.js";
 class Enemy extends Entity {
     /**
      * Creates an enemy.
-     * @param {Object} scene - The scene this object belongs to.
+     * @param {Phaser.Scene} scene - The scene this object belongs to.
      * @param {number} x - The x value.
      * @param {number} y - The y value.
      * @param {string} key - The key of the animation to play.
@@ -22,22 +22,27 @@ class Enemy extends Entity {
     constructor(scene, x, y, key) {
         super(scene, x, y, key, "Enemy");
 
+        this.body.velocity.y = Phaser.Math.Between(50, 100); // Temporary
         // Could be in a variable, but having stats variables all over the place might be less readable
         this.setData("speed", 200);
 
         // Shooting
-        this.setData("canShoot", true);
-        this.setData("fireRate",5);
+        this.setData("canShoot", true); // Used to add a delay between fires
+        this.setData("fireRate", RNG.getRandomInt(2, 5, true)); // The fire rate in projectile/second
 
         // Default stats
         this.setData("maxHealth", 100);
         this.setData("health", this.getData("maxHealth"));
         this.setData("maxShield", 50);
         this.setData("shield", this.getData("maxShield"));
-        this.setData("projectileDamage", 50);
+        this.setData("projectileDamage", 10); // The damage inflicted by this entity's projectiles
 
+        this.setData("isInvincible", false); // Used to add invincibility frames between hits
+        this.setData("invincibilityDuration", 100); // The time in ms the entity will ignore damage after being hit
+
+        this.angle = 180;
         // Add enemy to the physics group of enemies
-        this.scene.enemies.add(this);
+        this.scene.enemies.add(this); // TODO: Move this inside SceneMain enemy spawner
     }
 
     // TODO: Improve and fix movement
@@ -45,7 +50,7 @@ class Enemy extends Entity {
      * Moves this object randomly.
      */
     moveRandom() {
-        let decision = RNG.getRandomInt(0, 4);
+        let decision = RNG.getRandomInt(0, 4, true);
         switch (decision) {
             case 0:
                 break;
@@ -71,7 +76,7 @@ class Enemy extends Entity {
      * @param chance
      */
     tryShooting(chance) {
-        let decision = RNG.getRandomInt(0, chance);
+        let decision = RNG.getRandomInt(0, chance, true);
         switch (decision) {
             case 0:
                 break;
@@ -118,21 +123,42 @@ class Enemy extends Entity {
      */
     shoot() {
         if (this.getData("canShoot")) {
-            var projectile = new Projectile(this.scene, this.x, this.y, 1, "sprProjectile", "Enemy", this.getData("projectileDamage"));
+            var projectile = new Projectile(this.scene, this.x, this.y, 1, "sprProjectile", this.getData("type"), this.getData("projectileDamage"));
             this.setData("canShoot", false);
             this.nextShot = this.scene.time.now + 1000 / this.getData("fireRate");
         }
     }
 
     /**
-     * Checks this entity's health data and kills it if its health is <= 0.
+     * Checks this entity's health data and kills it if its health is <= 0. Also destroys it if outside of bounds.
      */
-    checkLife()
-    {
-        if (this.getData("health") <= 0)
-        {
+    checkLife() {
+        if (this.getData("health") <= 0) {
             //this.scene.enemies.remove(this);
             this.die(); // Kills entity
+        }
+        if (this.x > this.scene.game.config.width || this.y > this.scene.game.config.height) {
+            this.setData("isDead", true);
+            this.despawnDelay = this.scene.time.now + 2000; // Keeps track of time since death to delay object deletion
+        }
+    }
+
+    /**
+     * Applies damage to an entity, and sets a temporary invincibility.
+     * @param {number} damage - The incoming damage.
+     */
+    damageEntity(damage) {
+        let appliedDamage = damage; // TODO: Add algorithms like damage - shield, then decrease shield, etc.
+
+        if (!this.getData("isInvincible")) {
+            this.setTint(0xFF0000);
+            let newHealth = this.getData("health") - appliedDamage;
+            this.setData("health", newHealth);
+
+            this.setData("isInvincible", true);
+            this.invincibilityTime = this.scene.time.now + this.getData("invincibilityDuration");
+
+            //this.checkLife();
         }
     }
 
@@ -145,22 +171,28 @@ class Enemy extends Entity {
         {
             this.checkLife();
 
-            this.body.setVelocity(0, 0); // May need to be removed after implementing better movement
-
-            if (this.scene.time.now > this.nextShot)
+            // Checking invincibility frames
+            if (this.getData("isInvincible") && this.scene.time.now > this.invincibilityTime) // Remove temporary invincibility
             {
+                this.setData("isInvincible", false);
+                this.setTint(0xffffff); // Revert tint to normal
+            }
+
+            //this.body.setVelocity(0, 0); // May need to be removed after implementing better movement
+
+            if (this.scene.time.now > this.nextShot) {
                 this.setData("canShoot", true);
             }
 
             // Moves randomly and tries shooting
-            this.moveRandom();
-            this.tryShooting(5);
+            //this.moveRandom();
+            this.moveDown();
+            this.shoot();
 
-            // Keeps player inside the bounds of the screen
-            this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
-            this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);
-        }
-        else // Updates if entity IS dead
+            // Keeps enemy inside the bounds of the screen
+            /*this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
+            this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);*/
+        } else // Updates if entity IS dead
         {
             //this.scene.physics.world.disableBody(this);
             //this.moveDown();
@@ -169,8 +201,7 @@ class Enemy extends Entity {
             this.y += 2; // Moves this entity downwards. Can't use moveDown() because the entity's body is destroyed, thus unaffected by physics.
 
             // Destroys this entity and delete the object if despawn delay is reached
-            if (this.scene.time.now > this.despawnDelay)
-            {
+            if (this.scene.time.now > this.despawnDelay) {
                 this.destroy(true);
                 delete this;
             }

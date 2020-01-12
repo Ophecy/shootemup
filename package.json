@@ -2,7 +2,7 @@
   "name": "shootemup",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/game.js",
   "scripts": {
     "test": "node js/index.js",
     "start": "http-server -p 8080 . -o index.html"

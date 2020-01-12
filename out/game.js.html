@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: src/modules/enemy</title>
+    <title>JSDoc: Source: game.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,236 +17,72 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: src/modules/enemy</h1>
+    <h1 class="page-title">Source: game.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Enemy module.</div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="module-src_modules_entity.html">module:src/modules/entity</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="module:src/modules/enemy"><span class="type-signature"></span>module:src/modules/enemy<span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Exports the Enemy class as default.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_enemy.js.html">modules/enemy.js</a>, <a href="modules_enemy.js.html#line215">line 215</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="module-src_modules_enemy-Enemy.html">Enemy</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ DON'T FORGET to add .js extension when using WebStorm's auto-import, or Firefox will throw an exception
+ GOOD: "./modules/enemy.js"
+ BAD: "./modules/enemy" &lt;= Should work, but causes a bug in Firefox
+*/
+
+import SceneMainMenu from "./modules/sceneMainMenu.js";
+import SceneMain from "./modules/sceneMain.js";
+import SceneGameOver from "./modules/sceneGameOver.js";
+
+/**
+ * @var root
+ * @description Keeps a reference to the global scope (this).
+ */
+var root = this; // Just in case
+
+/**
+ * @var config
+ * @description Phaser config object.
+ * @type {{roundPixels: boolean, backgroundColor: string, pixelArt: boolean, physics: {default: string, arcade: {debug: boolean, gravity: {x: number, y: number}}}, width: number, scale: {mode: integer, autoCenter: integer}, type: (integer|integer), height: number, scene: {mode: integer, parent: string, create: create, update: update, preload: preload}}}
+ */
+var config = {
+    type: Phaser.AUTO,
+    width: 256 * 2,
+    height: 512 * 2,
+    backgroundColor: 'black',
+    physics: {
+        default: 'arcade', // Simple physics
+        arcade: {
+            gravity: {x: 0, y: 0},
+            debug: false
+        }
+    },
+    scene: [
+        SceneMainMenu,
+        SceneMain,
+        SceneGameOver
+    ],
+    pixelArt: true,
+    roundPixels: false, // Keeps it crispy
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    }
+};
+
+/**
+ * @var game
+ * @description Phaser game object, initialized with config.
+ * @see config
+ */
+var game = new Phaser.Game(config); // Initializing game with config object
+
+console.log("In game.js");
+</code></pre>
+        </article>
+    </section>
 
 
 
