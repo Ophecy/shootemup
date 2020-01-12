@@ -65,6 +65,7 @@ class SceneGameOver extends Phaser.Scene {
 
         // Shooting
         if (this.restartKey.isDown) {
+            this.game.global.score = 0;
             this.scene.start("SceneMain");
         }
     }
