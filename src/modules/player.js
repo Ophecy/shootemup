@@ -46,7 +46,7 @@ class Player extends Entity {
         this.body.velocity.y = -this.getData("speed");
     }
 
-    /**
+    /**this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.6, 'promptFont', "...", 16);
      * Moves this entity down.
      */
     moveDown() {
@@ -95,6 +95,7 @@ class Player extends Entity {
         this.setData("isDead", true);
         this.play("sprExplosion");
         this.despawnDelay = this.scene.time.now + 2000;
+        //this.scene.game.score.finalScore = this.scene.game.score.currentScore;
         //this.body.setVelocity(0, 0); // May need to be removed after implementing better movement
         //this.disableBody(true, true);
     }
@@ -114,6 +115,13 @@ class Player extends Entity {
             this.setData("isInvincible", true);
             this.invincibilityTime = this.scene.time.now + this.getData("invincibilityDuration");
 
+            // Scoring
+            /*
+            this.scene.game.score.currentScore += this.scene.game.score.addedPoints * this.scene.game.score.addedPointsMultiplier;
+            this.scene.game.score.noHitCount = 0;
+            this.scene.game.score.addedPoints = 0;
+            this.scene.game.score.addedPointsMultiplier = 0;
+             */
             //this.checkLife();
         }
     }

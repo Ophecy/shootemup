@@ -40,6 +40,10 @@ class Enemy extends Entity {
         this.setData("isInvincible", false); // Used to add invincibility frames between hits
         this.setData("invincibilityDuration", 100); // The time in ms the entity will ignore damage after being hit
 
+        // Scoring
+        //this.setData("scoreValue", 10);
+
+        // Set angle of enemy to face downward
         this.angle = 180;
         // Add enemy to the physics group of enemies
         this.scene.enemies.add(this); // TODO: Move this inside SceneMain enemy spawner
@@ -162,6 +166,29 @@ class Enemy extends Entity {
 
             //this.checkLife();
         }
+    }
+
+    /**
+     * Kills this enemy.
+     */
+    die() {
+        this.setTint(0xffffff); // Revert tint to normal
+        this.setData("isDead", true);
+        this.play("sprExplosion");
+
+        this.despawnDelay = this.scene.time.now + 2000; // Keeps track of time since death to delay object deletion
+
+        // Scoring
+        /*this.scene.game.score.addedPoints += this.getData("scoreValue");
+        this.scene.game.score.noHitCount += 1;
+        if (this.scene.game.score.noHitCount > 1)
+        {
+            this.scene.game.score.addedPointsMultiplier = 1 + this.scene.game.score.noHitCount/10;
+        }
+        else
+        {
+            this.scene.game.score.addedPointsMultiplier = 1;
+        }*/
     }
 
     /**
