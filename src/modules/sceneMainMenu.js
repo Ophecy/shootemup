@@ -41,6 +41,9 @@ class SceneMainMenu extends Phaser.Scene {
         this.bitmapPrompt = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.6, 'promptFont', "Press START to continue...", 16);
         this.bitmapPrompt.setOrigin(0.5);
 
+        this.bitmapPrompt = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.7, 'promptFont', "[Z][Q][S][D] to move\n\n[SPACE] to shoot", 16);
+        this.bitmapPrompt.setOrigin(0.5);
+
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.startKey = this.keySpace;
         //this.scene.start("SceneMain");
