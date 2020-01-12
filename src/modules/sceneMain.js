@@ -197,7 +197,7 @@ class SceneMain extends Phaser.Scene {
 
         this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.1, this.game.config.height*0.01, 'promptFont', `Score: ${this.game.global.score}`, 16);
         this.bitmapScore.setOrigin(0.5);
-        this.bitmapScore.setDepth(1)
+        this.bitmapScore.setDepth(1);
         console.log(this.bitmapScore)
     }
 
