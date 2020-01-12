@@ -39,33 +39,12 @@ class SceneGameOver extends Phaser.Scene {
         this.bgScrollSpeed = 2;
         this.bg.setTint(0xFF6347, 0.5);
 
-        /**
-         * @var title
-         * @description The game over title text.
-         * @type {Phaser.GameObjects.Text}
-         */
-        this.title = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.5, "GAME OVER", {
-            fontFamily: 'monospace',
-            fontSize: 48,
-            fontStyle: 'bold',
-            color: '#8B0000',
-            align: 'center'
-        });
-        this.title.setOrigin(0.5);
+        this.bitmapTitle = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.5, 'titleFont', "GAME OVER", 72);
+        this.bitmapTitle.setOrigin(0.5);
+        this.bitmapTitle.setTint(0xFF0000);
 
-        /**
-         * @var prompt
-         * @description The text prompting the player to press a key.
-         * @type {Phaser.GameObjects.Text}
-         */
-        this.prompt = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.9, "Press [Space] to restart...", {
-            fontFamily: 'monospace',
-            fontSize: 22,
-            fontStyle: 'bold',
-            color: '#8B0000',
-            align: 'center'
-        });
-        this.prompt.setOrigin(0.5);
+        this.bitmapPrompt = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.6, 'promptFont', "Press START to continue...", 16);
+        this.bitmapPrompt.setOrigin(0.5);
 
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.startKey = this.keySpace;
