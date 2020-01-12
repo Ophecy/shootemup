@@ -186,7 +186,7 @@ class SceneMain extends Phaser.Scene {
 
         // Spawning enemies
         this.time.addEvent({
-            delay: 5000, // Spawns one enemy every 5 seconds
+            delay: 1000, // Spawns one enemy every 5 seconds
             callback: function () {
                 var enemy = this.spawnEnemy(Phaser.Math.Between(0, this.game.config.width), 0)
             },

@@ -28,7 +28,7 @@ class Enemy extends Entity {
 
         // Shooting
         this.setData("canShoot", true); // Used to add a delay between fires
-        this.setData("fireRate", RNG.getRandomInt(2, 5, true)); // The fire rate in projectile/second
+        this.setData("fireRate", RNG.getRandomInt(1, 3, true)); // The fire rate in projectile/second
 
         // Default stats
         this.setData("maxHealth", 100);

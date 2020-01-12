@@ -26,7 +26,7 @@ class Player extends Entity {
 
         // Shooting
         this.setData("canShoot", true); // Used to add a delay between fires
-        this.setData("fireRate", 5); // The fire rate in projectile/second
+        this.setData("fireRate", 10); // The fire rate in projectile/second
 
         // Default stats
         this.setData("maxHealth", 100);
