@@ -80,8 +80,8 @@ class SceneMain extends Phaser.Scene {
         this.load.image('bgSpace', 'assets/bgSpace.png');
 
         // HealthBar
-        this.load.image('sprHealthBarFull', 'assets/sprHealthbarFull.png');
-        this.load.image('sprHealthBarEmpty', 'assets/sprHealthbarEmpty.png');
+        this.load.image('sprHealthBarFull', 'assets/sprStatusBarFull.png');
+        this.load.image('sprHealthBarEmpty', 'assets/sprStatusBarEmpty.png');
 
         // Loading player spritesheet (just a single frame at the moment)
         this.load.spritesheet("sprPlayer", "assets/sprPlayer.png", {
@@ -252,8 +252,8 @@ class SceneMain extends Phaser.Scene {
 
         // Healthbar, updated AFTER player
 
-        this.playerHealthBar.scaleX = this.player.getData("health");
-        //  this.playerHealthBarBackground.scaleX = this.player.getData("maxHealth");
+        this.playerHealthBar.scaleX = this.player.getData("health")/100;
+        this.playerHealthBarBackground.scaleX = 1/*this.player.getData("maxHealth")*/;
 
         // Loop through enemies for updates
         for (let i = 0; i < this.enemies.countActive(); i++) {
