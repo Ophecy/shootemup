@@ -50,5 +50,7 @@ var config = {
  * @see config
  */
 var game = new Phaser.Game(config); // Initializing game with config object
-
+game.global = {
+    score: 0
+};
 //console.log("In game.js");

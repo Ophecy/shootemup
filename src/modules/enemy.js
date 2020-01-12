@@ -134,6 +134,8 @@ class Enemy extends Entity {
      */
     checkLife() {
         if (this.getData("health") <= 0) {
+            this.scene.game.global.score +=10;
+            console.log("add 10 to score: " + this.scene.game.global.score)
             //this.scene.enemies.remove(this);
             this.die(); // Kills entity
         }

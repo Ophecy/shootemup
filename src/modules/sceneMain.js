@@ -9,6 +9,7 @@ import Player from "./player.js";
  * Represents the main scene of the game, where the gameplay takes place.
  */
 class SceneMain extends Phaser.Scene {
+
     /**
      * Creates the main scene with an appropriate key.
      */
@@ -194,6 +195,9 @@ class SceneMain extends Phaser.Scene {
             loop: true
         });
 
+        this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.1, this.game.config.height*0.01, 'promptFont', `Score: ${this.game.global.score}`, 16);
+        this.bitmapScore.setOrigin(0.5);
+        console.log(this.bitmapScore)
     }
 
     /**
@@ -203,6 +207,7 @@ class SceneMain extends Phaser.Scene {
     update() {
         // Background scrolling
         this.bg.tilePositionY -= this.bgScrollSpeed;
+        this.bitmapScore._text = `Score: ${this.game.global.score}`;
 
         // Entity updates
         this.player.update();
