@@ -253,7 +253,7 @@ class SceneMain extends Phaser.Scene {
         // Healthbar, updated AFTER player
 
         this.playerHealthBar.scaleX = this.player.getData("health");
-        //this.playerHealthBarBackground.scaleX = this.player.getData("maxHealth");
+        //  this.playerHealthBarBackground.scaleX = this.player.getData("maxHealth");
 
         // Loop through enemies for updates
         for (let i = 0; i < this.enemies.countActive(); i++) {
