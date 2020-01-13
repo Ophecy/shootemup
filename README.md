@@ -1,5 +1,8 @@
 # shootemup
 
+##  Description
+Shoot'em'up developped in Javascript with Phaser for a school project.
+
 ## Project structure
 * shootemup: html, README, etc.
   * assets: images, sounds, etc.
