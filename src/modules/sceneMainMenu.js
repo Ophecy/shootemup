@@ -20,6 +20,7 @@ class SceneMainMenu extends Phaser.Scene {
         this.load.image('bgSpace', 'assets/bgSpace.png');
         this.load.bitmapFont('titleFont', 'assets/fonts/titleFont.png', 'assets/fonts/titleFont.fnt');
         this.load.bitmapFont('promptFont', 'assets/fonts/promptFont.png', 'assets/fonts/promptFont.fnt');
+        this.load.audio('sngMainMenu', 'assets/music/sngMainMenu.wav', {loop: true});
     }
 
     /**
@@ -41,8 +42,10 @@ class SceneMainMenu extends Phaser.Scene {
         this.bitmapPrompt = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.6, 'promptFont', "Press START to continue...", 16);
         this.bitmapPrompt.setOrigin(0.5);
 
-        this.bitmapPrompt = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.7, 'promptFont', "[Z][Q][S][D] to move\n\n[SPACE] to shoot", 16);
-        this.bitmapPrompt.setOrigin(0.5);
+        this.bitmapMusicInfo = this.add.bitmapText(this.game.config.width*0.5, this.game.config.height*0.98, 'promptFont', "♪ Voidson - Leperranger Main Menu Theme ♪", 12);
+        this.bitmapMusicInfo.setOrigin(0.5);
+
+        this.sound.play('sngMainMenu');
 
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.startKey = this.keySpace;
@@ -59,6 +62,7 @@ class SceneMainMenu extends Phaser.Scene {
 
         // Shooting
         if (this.startKey.isDown) {
+            this.sound.stopAll();
             this.scene.start("SceneMain");
         }
     }
