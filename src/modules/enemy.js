@@ -127,7 +127,7 @@ class Enemy extends Entity {
      */
     shoot() {
         if (this.getData("canShoot")) {
-            var projectile = new Projectile(this.scene, this.x, this.y, 1, "sprProjectile", this.getData("type"), this.getData("projectileDamage"));
+            var projectile = new Projectile(this.scene, this.x, this.y+this.height/2, 1, "sprProjectile", this.getData("type"), this.getData("projectileDamage"));
             this.setData("canShoot", false);
             this.nextShot = this.scene.time.now + 1000 / this.getData("fireRate");
         }
