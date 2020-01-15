@@ -113,13 +113,6 @@ class SceneMain extends Phaser.Scene {
      * @see {@link https://photonstorm.github.io/phaser3-docs/Phaser.Types.Scenes.html#.SceneCreateCallback|Phaser.Types.Scenes.SceneCreateCallback}
      */
     create() {
-        // HUD
-        /*
-        this.bitmapScore = this.add.bitmapText(this.game.config.width * 0.5, this.game.config.height*0.6, 'promptFont', "...", 16);
-        this.bitmapScore.setOrigin(0.5);
-        this.bitmapScore.setDepth(1000);
-         */
-
         // Handling time
         this.clock = new Phaser.Time.Clock(this);
         //this.playerFireDelay = this.clock.addEvent();
