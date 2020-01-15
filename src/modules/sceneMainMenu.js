@@ -49,7 +49,6 @@ class SceneMainMenu extends Phaser.Scene {
 
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.startKey = this.keySpace;
-        //this.scene.start("SceneMain");
     }
 
     /**
