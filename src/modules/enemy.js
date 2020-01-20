@@ -93,7 +93,6 @@ class Enemy extends Entity {
     }
 
 
-    // TODO: Rework controls to 1) prevent faster diagonal movement; 2) add acceleration and deceleration
     /**
      * Moves this entity up.
      */
@@ -216,6 +215,7 @@ class Enemy extends Entity {
             // Moves randomly and tries shooting
             //this.moveRandom();
             this.moveDown();
+            this.body.velocity.normalize().scale(speed); // Prevents enemy from being faster than speed, and fixes faster diagolnal movement
             this.shoot();
 
             // Keeps enemy inside the bounds of the screen

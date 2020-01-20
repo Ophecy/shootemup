@@ -37,7 +37,6 @@ class Player extends Entity {
         this.setData("invincibilityDuration", 500); // The time in ms the entity will ignore damage after being hit
     }
 
-    // TODO: Rework controls to 1) prevent faster diagonal movement; 2) add acceleration and deceleration
     /**
      * Moves this entity up.
      */
@@ -153,8 +152,6 @@ class Player extends Entity {
                 if (this.scene.game.global.debug) console.log("Inside Player after despawn Delay");
                 //this.scene.physics.world.disableBody(this);
 
-                // TODO: Check that the following don't cause bugs
-                // TODO: Implement scene change to SceneGameOver (NEED TO IMPLEMENT SCENE SWITCHING FIRST)
                 this.scene.scene.start("SceneGameOver");
                 //this.destroy(true);
                 //delete this;

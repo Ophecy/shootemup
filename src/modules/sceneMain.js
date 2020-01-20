@@ -67,6 +67,31 @@ class SceneMain extends Phaser.Scene {
         //player.anims.play('hurt'); // May play an animation
     }
 
+    // Input
+    /**
+     * Reads input and executes appropriate actions.
+     */
+    handleInput() {
+        // Movement
+        if (this.moveUpKey.isDown) {
+            this.player.moveUp();
+        } else if (this.moveDownKey.isDown) {
+            this.player.moveDown();
+        }
+        if (this.moveLeftKey.isDown) {
+            this.player.moveLeft();
+        } else if (this.moveRightKey.isDown) {
+            this.player.moveRight();
+        }
+        // Shooting
+        if (this.shootKey.isDown) {
+            this.player.shoot();
+        }
+
+        // Normalize movement so diagonal movement aren't faster than purely vertical or horizontal movement
+        this.player.body.velocity.normalize().scale(this.player.getData("speed"));
+    }
+
     // Phaser functions
     /**
      * The preload function of the scene.
@@ -126,7 +151,7 @@ class SceneMain extends Phaser.Scene {
         /**
          * @var bg
          * @description The background image of the scene.
-         * @todo 1) Replace white in bgSpace with alpha; 2) Add bgColor background before bgSpace
+         * @todo 1) Replace white in bgSpace with alpha; 2) Add bgColor background behind bgSpace
          * @type {Phaser.GameObjects.TileSprite}
          */
         this.bg = this.add.tileSprite(0, 0, this.game.config.width * 2, this.game.config.height * 2, 'bgSpace');
@@ -244,7 +269,6 @@ class SceneMain extends Phaser.Scene {
         this.player.update();
 
         // Healthbar, updated AFTER player
-
         this.playerHealthBar.scaleX = this.player.getData("health")/100;
         this.playerHealthBarBackground.scaleX = 1/*this.player.getData("maxHealth")*/;
 
@@ -253,34 +277,18 @@ class SceneMain extends Phaser.Scene {
             this.enemies.getChildren()[i].update();
         }
 
-        // Loop through projectiles for updates
+        // Loop through player projectiles for updates
         for (let i = 0; i < this.playerProjectiles.countActive(); i++) {
             this.playerProjectiles.getChildren()[i].update();
         }
 
-        // Loop through projectiles for updates
+        // Loop through enemy projectiles for updates
         for (let i = 0; i < this.enemyProjectiles.countActive(); i++) {
             this.enemyProjectiles.getChildren()[i].update();
         }
 
-        // Handling controls
-        // TODO: Put in a handleInput() function
-        // TODO: Refactor controls to fix faster diagonal movement (ie. y_axis = down - up; x_axis = right - left; movement = clamped vector(x_axis, y_axis)
-        // Movement
-        if (this.moveUpKey.isDown) {
-            this.player.moveUp();
-        } else if (this.moveDownKey.isDown) {
-            this.player.moveDown();
-        }
-        if (this.moveLeftKey.isDown) {
-            this.player.moveLeft();
-        } else if (this.moveRightKey.isDown) {
-            this.player.moveRight();
-        }
-        // Shooting
-        if (this.shootKey.isDown) {
-            this.player.shoot();
-        }
+        // Handling input
+        this.handleInput();
     }
 }
 
